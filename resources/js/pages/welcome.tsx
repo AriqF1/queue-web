@@ -1,3 +1,5 @@
+import { Head } from '@inertiajs/react';
+
 const dashboard = () => '/dashboard';
 const login = () => '/login';
 const register = () => '/register';
@@ -8,8 +10,7 @@ export default function Welcome() {
 
     return (
         <>
-            <title>Welcome to Queue</title>
-
+            <Head title="Welcome to Queue" />
             <div className="flex min-h-screen flex-col items-center bg-gray-50 p-4 font-sans text-gray-900 dark:bg-gray-950 dark:text-gray-100">
                 <header className="flex w-full max-w-7xl justify-end px-4 py-6">
                     <nav className="flex items-center gap-4">
@@ -24,7 +25,7 @@ export default function Welcome() {
                             <>
                                 <a
                                     href={login()}
-                                    className="rounded-lg px-5 py-2 text-gray-600 transition-colors duration-300 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+                                    className="rounded-lg border-1 border-white px-5 py-2 text-gray-600 transition-colors duration-300 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
                                 >
                                     Log in
                                 </a>
@@ -59,7 +60,7 @@ export default function Welcome() {
 
                     {/* Visual SVG */}
                     <div className="w-full max-w-md flex-1 lg:max-w-xl">
-                        <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg" className="h-auto w-full">
+                        <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg" className="h-auto w-full rounded-lg bg-gray-100">
                             {/* Base queue path */}
                             <path
                                 d="M 50 150 C 150 50, 350 50, 450 150"
