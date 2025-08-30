@@ -8,12 +8,10 @@ interface Props {
 export default ({ children }: Props) => {
     return (
         <>
-            <Head title="Queue Display">
-                <link rel="preconnect" href="https://fonts.bunny.net" />
-                <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700,800" rel="stylesheet" />
-            </Head>
-
-            <main className="min-h-screen grid-cols-3 gap-8 px-12">{children}</main>
+            <Head title="Queue Display" />
+            <main className="relative flex min-h-screen flex-col items-center justify-center bg-[#0a0a0a] px-12 text-white before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_at_center,_#2c2c2a_0%,_transparent_60%)]">
+                {children}
+            </main>
         </>
     );
 };
