@@ -33,37 +33,36 @@ export default function Kiosk({ csrf }: { csrf: string }) {
 
     return (
         <DisplayLayout>
-            <header className="mt-12 text-center">
-                <p className="text-2xl font-semibold text-white/80">Welcome to</p>
-                <h1 className="mb-18 text-4xl font-bold text-white">Bank Central Asia</h1>
-            </header>
-            <div className="mx-auto w-full max-w-6xl">
+            <div className="flex w-full max-w-6xl flex-col items-center justify-center p-8 text-center sm:p-12 lg:p-16">
+                <header className="mb-12">
+                    <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-7xl">Welcome to the Queue</h1>
+                    <p className="mt-4 text-lg text-white/80 sm:text-xl">Please select the service you need.</p>
+                </header>
                 {!queueNumber ? (
-                    <div className="rounded-lg bg-white p-8 shadow-2xl">
-                        <div className="mb-8 text-center">
-                            <h2 className="mb-4 text-4xl font-medium text-gray-800">Please select the service you need</h2>
-                        </div>
-
-                        <div className="grid min-h-80 grid-cols-2 gap-4">
-                            {services.map((service) => (
-                                <Button key={service.id} onClick={() => handleGetQueue(service.id)} className="h-full w-full text-4xl">
-                                    <Icon iconNode={service.icon} className="size-14" />
-                                    {service.name}
-                                </Button>
-                            ))}
-                        </div>
+                    <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                        {services.map((service) => (
+                            <Button
+                                className="flex h-full w-full flex-col items-center justify-center space-y-4 rounded-xl border border-white/10 bg-[#161615] p-8 text-white shadow-xl transition-all hover:scale-[1.02] hover:bg-[#1C1C1A] focus:ring-4 focus:ring-blue-500/50 focus:outline-none"
+                                key={service.id}
+                                onClick={() => handleGetQueue(service.id)}
+                            >
+                                <div className="size-20">
+                                    <Icon iconNode={service.icon} className="size-full animate-pulse text-[#60A5FA]" />
+                                </div>
+                                <span className="text-2xl font-semibold sm:text-xl lg:text-2xl">{service.name}</span>
+                            </Button>
+                        ))}
                     </div>
                 ) : (
-                    <div className="rounded-lg bg-white p-12 text-center shadow-2xl">
-                        <h2 className="mb-4 text-4xl font-medium text-gray-800">Your Queue Number</h2>
-                        <div className="mb-8 text-7xl font-bold text-black">{queueNumber}</div>
-                        <p className="mb-8 text-2xl text-gray-500">
-                            Please wait until your number is called.
-                            <br />
-                            Watch the display screen for your turn.
-                        </p>
-                        <Button onClick={() => setQueueNumber(null)} size="lg">
-                            Back to Services
+                    <div className="w-full max-w-2xl rounded-2xl border border-white/10 bg-[#161615] p-12 shadow-2xl backdrop-blur-md">
+                        <h2 className="text-3xl font-bold text-white/90 sm:text-4xl">Your Queue Number</h2>
+                        <div className="my-8 text-8xl font-black text-[#60A5FA] drop-shadow-lg sm:text-9xl lg:text-[10rem]">{queueNumber}</div>
+                        <p className="text-xl text-white/70">Please wait until your number is called.</p>
+                        <Button
+                            onClick={() => setQueueNumber(null)}
+                            className="mt-8 rounded-lg border-2 border-[#60A5FA] bg-transparent px-6 py-4 text-white hover:bg-[#60A5FA] hover:text-white"
+                        >
+                            Get a new number
                         </Button>
                     </div>
                 )}
